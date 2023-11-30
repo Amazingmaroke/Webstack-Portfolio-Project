@@ -1,8 +1,11 @@
 Building a MERN Stack CRUD Web Application with Tailwind CSS 
+
 Overview
+
 Full-stack CRUD web application using the MERN stack (MongoDB, Express.js, React.js, Node.js) and incorporates Tailwind CSS for styling. The project includes authentication, authorization, and various frontend and backend dependencies to facilitate development.
 
 CRUD System
+
 1. Understanding CRUD
 CRUD stands for Create, Read, Update, and Delete, which are the four basic operations that can be performed on data. In a web application, these operations typically correspond to:
 

@@ -91,7 +91,7 @@ postcss and autoprefixer: CSS post-processor tool with automatic vendor prefixin
 Vite: A fast web development build tool for modern frontend projects.
 
 Getting Started
-Clone the Repository: git clone  https://github.com/Amazingmaroke/Webstack-Portfolio-Project/settings
+Clone the Repository: git clone  https://github.com/Amazingmaroke/Webstack-Portfolio-Project
 
 Backend Setup:
 

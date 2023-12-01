@@ -4,7 +4,7 @@ const myapp=express()
 const mongoose =require("mongoose");
 const Connet = require('./configs/databasecon');
 
-port=8000
+ const port=8000
 Connet()
 
 mongoose.connection.once("open",()=>{

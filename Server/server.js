@@ -5,9 +5,10 @@ const Connet = require('./configs/databasecon');
 const app = express();
 const port = 3000;
 Connet()
-app.get('/', (req, res) => {
-  res.send('Welcome to geval branch server!');
-});
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 mongoose.connection.once("open",()=>{
   console.log("connected")
 app.listen(port, () => {

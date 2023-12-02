@@ -2,8 +2,6 @@ require('dotenv').config();
 const express =require("express")
 const mongoose =require("mongoose");
 const Connet = require('./configs/databasecon');
-
-
 const app = express();
 const port = 3000;
 Connet()

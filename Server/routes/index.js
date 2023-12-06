@@ -1,21 +1,28 @@
-import express from "express"; // import the express module
+// Webstack-Portfolio-Project/Server/routes/index.js
+const express = require('express');
+const { registerUser } = require('../controllers/user'); // Import the registerUser function
 
-const app = express(); // Create an app object
+const app = express();
 
-app.disable("x-powered-by"); // Reduce fingerprinting (optional)
-// home route with the get method and a handler
-app.get("/v1", (req, res) => {
+app.disable('x-powered-by'); // Reduce fingerprinting (optional)
+
+// Home route with the get method and a handler
+app.get('/v1', (req, res) => {
     try {
         res.status(200).json({
-            status: "success",
+            status: 'success',
             data: [],
-            message: "Welcome to our API homepage!",
+            message: 'Welcome to our API homepage!',
         });
     } catch (err) {
         res.status(500).json({
-            status: "error",
-            message: "Internal Server Error",
+            status: 'error',
+            message: 'Internal Server Error',
         });
     }
 });
-export default app;
+
+// Register route
+app.post('/v1/register', registerUser);
+
+module.exports = app;

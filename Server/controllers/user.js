@@ -1,6 +1,7 @@
 // Webstack-Portfolio-Project/Server/controllers/user.js
 const User = require('../model/user');
 const bcrypt = require('bcrypt');
+const zxcvbn = require('zxcvbn');
 
 const registerUser = async (req, res) => {
     try {
@@ -11,7 +12,16 @@ const registerUser = async (req, res) => {
         if (existingUser) {
             return res.status(400).json({
                 status: 'error',
-                message: 'User already exists',
+                message: 'Email address is already in use',
+            });
+        }
+
+        // Implement password strength check
+        const passwordStrength = zxcvbn(password);
+        if (passwordStrength.score < 2) {
+            return res.status(400).json({
+                status: 'error',
+                message: 'Password is too weak. Please choose a stronger password.',
             });
         }
 

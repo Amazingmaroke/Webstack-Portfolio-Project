@@ -33,7 +33,7 @@ const userSchema = new Schema({
         required: true
     },
    
-    
+    userrefreshToken:[String]
 
 });
 userSchema.pre("save", async function (next) {

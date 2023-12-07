@@ -12,7 +12,7 @@ const registerUser = async (req, res) => {
 
     
     
-    if ( duplicateemail)return res.status(400).json({ error: 'Email already used' });
+    if ( duplicateemail)return res.status(401).json({ error: 'Email already used' });
 
 
 

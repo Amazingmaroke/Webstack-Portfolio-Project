@@ -8,7 +8,7 @@ Connet()
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use("/",require('./routes/user'))
+app.use("/api/user", require('./routes/user'))
 
 mongoose.connection.once("open",()=>{
   console.log("connected")

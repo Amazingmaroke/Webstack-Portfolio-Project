@@ -21,12 +21,9 @@ const userSchema = new Schema({
     },
     
     roles: {
-        User: {
             type: Number,
             default: 2
-        },
     
-        Admin: Number
     },
     password: {
         type: String,

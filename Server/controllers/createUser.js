@@ -3,7 +3,8 @@ const User = require('../model/user');
 
 const createUser = async (req, res) => {
   try {
-    const { firstname, lastname, email, password, phone } = req.body;
+    const { firstname, lastname, email, password, phone,roles } = req.body;
+    if ( !password ||!email ||!phone||!firstname||!lastname) return res.status(400).json({ 'message': 'password,email,firstname  lastanme  and phone required' });
 
     const duplicateEmail = await User.findOne({ email }).exec();
     if (duplicateEmail) {
@@ -16,6 +17,7 @@ const createUser = async (req, res) => {
       email,
       password,
       phone,
+      roles
     });
 
     await newUser.save();

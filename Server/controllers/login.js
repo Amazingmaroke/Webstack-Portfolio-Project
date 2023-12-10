@@ -19,16 +19,17 @@ const Loginhandler = async (req, res) => {
     const passmatch = await bcrypt.compare(password, requireduser.password);
 
     if (passmatch) {
-      const roles = Object.values(requireduser.roles).filter(Boolean);
+      const roles = requireduser.roles
 
       const accessToken = jwt.sign(
         {
           "Userinfo": {
             "email": requireduser.email,
+            "roles": roles
           }
         },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: '30s' }
+        { expiresIn: '500s' }
       );
 console.log(roles)
       const getNewRefreshToken = jwt.sign(
@@ -57,7 +58,7 @@ console.log(roles)
       res.cookie('jwt', getNewRefreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
 
       // Send authorization roles and access token to the user
-      res.json({ accessToken, roles });
+      res.json({ accessToken, roles,requireduser});
     } else {
       res.sendStatus(401);
     }

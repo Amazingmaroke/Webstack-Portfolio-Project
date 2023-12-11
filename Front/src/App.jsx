@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Account from './components/Account';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -9,11 +9,11 @@ import Register from './components/auth/Register';
 function App() {
   return (
     <BrowserRouter>
-              <Switch>   
-                      <Route path="/account" component={Account}/>
-                      <Route path="/login" component={Login}/> 
-                      <Route path="/register"  component={Register}/>        
-              </Switch>
+              <Routes>   
+                      <Route path="/account" element={<Account/>}/>
+                      <Route path="/login" element={<Login/>}/> 
+                      <Route path="/register"  element={<Register/>}/>        
+              </Routes>
           </BrowserRouter>
   );
 }

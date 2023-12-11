@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "../Axiosapi";
+import {  useNavigate, } from 'react-router-dom';
+
 
 const Register = () => {
+    const navigate=useNavigate()
   const [firstname, setfirstname] = useState("");
   const [lastname, setlastname] = useState("");
   const [email, setemail] = useState("");
@@ -39,6 +42,7 @@ const Register = () => {
       setcomfirm("");
       setemail("");
       setpassword("");
+      navigate("/login")
 
       console.log("succes");
     } catch (err) {
@@ -86,7 +90,7 @@ const Register = () => {
                 value={lastname}
                 onChange={(e) => setlastname(e.target.value)}
                 type="text"
-                class="block border border-grey-light w-full p-3 rounded mb-4"
+                className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="lastname"
                 placeholder="Last Name"
               />
@@ -97,7 +101,7 @@ const Register = () => {
                 onChange={(e) => setphone(e.target.value)}
                 value={phone}
                 type="text"
-                class="block border border-grey-light w-full p-3 rounded mb-4"
+                className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="phone"
                 placeholder="Phone Number"
               />

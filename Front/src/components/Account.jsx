@@ -7,19 +7,17 @@ import Sidebar from '../components/Sidebar';
 function Account() {
   return (
     <div className="">
-      <div><h1>Account page</h1></div>
-      <div className="flex overflow-scroll ">
+      
+      <div className="flex  ">
         <div className="basis-[12%] h-[100vh]">
           <Sidebar />
         </div>
-        <div className="basis-[88%] border overflow-scroll h-[100vh]">
-          <Dashboardview />
+        <div className="basis-[88%] overflow-scroll h-[100vh]">
+        <Dashboardview />
           <div>
             <Outlet></Outlet>
           </div>
         </div>
-
-
       </div>
     </div>
   );

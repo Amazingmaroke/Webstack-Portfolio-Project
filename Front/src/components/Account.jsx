@@ -14,6 +14,7 @@ function Account() {
         </div>
         <div className="basis-[88%] overflow-scroll h-[100vh]">
         <Dashboardview />
+        
           <div>
             <Outlet></Outlet>
           </div>

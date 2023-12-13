@@ -35,7 +35,7 @@ const Login = () => {
 
                 <div class="text-grey-dark mt-6">
                     Don't have an account?  
-                    <a class="no-underline border-b border-blue text-blue" href="../login/">
+                    <a class="no-underline border-b border-blue text-blue" href="../register/">
                         Signup
                     </a>.
                 </div>

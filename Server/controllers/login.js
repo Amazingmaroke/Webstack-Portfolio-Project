@@ -13,13 +13,14 @@ const Loginhandler = async (req, res) => {
   try {
     const requireduser = await User.findOne({ email: email}).exec();
     if (!requireduser) {
-      return res.status(401).json({ error: 'Incorrect email or password' });
+      return res.status(400).json({ "message": 'Incorrect email or password' });
     }
 
     const passmatch = await bcrypt.compare(password, requireduser.password);
 
     if (passmatch) {
       const roles = requireduser.roles
+      const id=requireduser._id
 
       const accessToken = jwt.sign(
         {
@@ -48,17 +49,17 @@ console.log(roles)
           getnewRefreshTokenArray = [];
         }
 
-        res.clearCookie('jwt', { httpOnly: true, sameSite: 'None',  });
+        res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure:true });
       }
 
       requireduser.userrefreshToken = [...getnewRefreshTokenArray, getNewRefreshToken];
       await requireduser.save();
 
       // Set refreshToken as a secure cookie
-      res.cookie('jwt', getNewRefreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+      res.cookie('jwt', getNewRefreshToken, { httpOnly: true, secure:true,sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
 
       // Send authorization roles and access token to the user
-      res.json({ accessToken, roles,requireduser});
+      res.json({ accessToken, roles,id});
     } else {
       res.sendStatus(401);
     }

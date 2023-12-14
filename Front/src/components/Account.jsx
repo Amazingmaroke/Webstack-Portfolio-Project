@@ -1,6 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import Dashboardview from '../components/Dashboardview';
 import Sidebar from '../components/Sidebar';
+import Tableview from './sections/Tableview';
+import Viewuseradmin from './sections/Viewusersadmin';
+
 //import logo from './logo.svg';
 
 
@@ -14,6 +17,8 @@ function Account() {
         </div>
         <div className="basis-[88%] overflow-scroll h-[100vh]">
         <Dashboardview />
+        
+        <Viewuseradmin />
         
           <div>
             <Outlet></Outlet>

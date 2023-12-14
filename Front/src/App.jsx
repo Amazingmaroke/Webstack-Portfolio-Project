@@ -4,6 +4,8 @@ import Account from './components/Account';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import { RequireAuth } from './components/Authcontextprovider';
+import Landingpage from './components/Landingpage';
+import User from './components/user';
 
 
 
@@ -16,10 +18,21 @@ function App() {
 
 
                       <Route path="/login" element={<Login/>}/> 
-                      <Route path="/register"  element={<Register/>}/> 
-<Route  element={<RequireAuth allowedRoles={2}/>} />
-                      <Route path="/account" element={<Account/>}/>
-                         
+                      <Route path="/register"  element={<Register/>}/>
+                      <Route path="/"  element={<Landingpage/>}/>
+
+                      
+                      <Route element={<RequireAuth allowedRoles={3}/>}>
+ 
+                      <Route path="account"  element={<Account/>}/>  
+                      </Route>
+                      
+                      <Route element={<RequireAuth allowedRoles={2}/>}>
+ 
+                      <Route path="user"  element={<User/>}/>  
+                      </Route>
+                      
+
               </Routes>
           </BrowserRouter>
   );

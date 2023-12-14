@@ -39,7 +39,7 @@ console.log("loo")
       setemail("");
       setpassword("");
       
-      const destination = roles === 2 ? "/account" : "/admin";
+      const destination = roles === 2 ? "/user" : "/account";
 console.log("Navigating to:", destination);
 navigate(destination)
 
@@ -101,8 +101,13 @@ navigate(destination)
               Login
             </button>
 </form>
-            <div class="text-center text-sm text-grey-dark mt-4">
-              Wecome back
+          
+                <div class="text-grey-dark mt-6">
+                    Don't have an account?  
+                    <a class="no-underline border-b border-blue text-blue" href="../register/">
+                        Signup
+                    </a>.
+                </div>
             </div>
           </div>
 
@@ -118,7 +123,7 @@ navigate(destination)
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 

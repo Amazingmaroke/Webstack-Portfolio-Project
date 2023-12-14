@@ -27,7 +27,8 @@ export default function Tableview() {
                   <td className="whitespace-nowrap px-6 py-4">Otto</td>
                   <td className="whitespace-nowrap px-6 py-4">@mdo</td>
                   <td ><ButtonGroup size='md' ripple={true} className='gap-4'>
-      <Button className='bg-blue-800 flex w-max flex-col gap-4'>Edit</Button>
+                    <div><Button className='bg-blue-800 flex w-max flex-col gap-4'>Edit </Button></div>
+      
       <Button className='bg-red-800 flex w-max flex-col gap-4'>Delete</Button>
       
     </ButtonGroup></td>

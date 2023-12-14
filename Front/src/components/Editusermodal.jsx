@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Creatusermodal = () => {
+const Modal = () => {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
@@ -77,4 +77,4 @@ const Creatusermodal = () => {
   );
 };
 
-export default Creatusermodal;
+export default Modal;

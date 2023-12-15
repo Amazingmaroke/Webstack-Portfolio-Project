@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Modal from "../Creatusermodal";
-import { useAxiosPrivatehook } from "../../utilitis/Axiosapi";
+import { useAxiosPrivatehook } from "../utilitis/Axiosapi";
+import { Link } from "react-router-dom";
 
-export default function Viewuseradmin() {
+export default function Editlluser() {
   const axiosInstance = useAxiosPrivatehook();
   const [users, setUsers] = useState([]);
 
@@ -20,11 +20,10 @@ export default function Viewuseradmin() {
   }, [axiosInstance]);
 
   return (
-    <div className="flex flex-col">
-      <div className="overflow-x-auto">
+    <div className="flex i overflow-hidden  flex-col">
+      <div >
         <div className=" flex flex-col items-center justify-right bg-white">
-         
-          <Modal />
+        
         </div>
         <div className="p-1.5 w-full inline-block align-middle">
           <div className="overflow-hidden border rounded-lg">
@@ -47,13 +46,13 @@ export default function Viewuseradmin() {
                     scope="col"
                     className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase"
                   >
-                    ID
+                    firstname
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase"
                   >
-                    Name
+                    lastname
                   </th>
                   <th
                     scope="col"
@@ -65,14 +64,9 @@ export default function Viewuseradmin() {
                     scope="col"
                     className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase"
                   >
-                    Edit
+                     Edit
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase"
-                  >
-                    Delete
-                  </th>
+                  
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -99,21 +93,12 @@ export default function Viewuseradmin() {
                       {user.email}
                     </td>
                     <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                      <a
-                        className="text-green-500 hover:text-green-700"
-                        href="#"
-                      >
-                        Edit
-                      </a>
+                    <Link to={`/account/edit-user/${user._id}`} className="text-green-500 hover:text-green-700">
+  Click To Edit
+</Link>
+
                     </td>
-                    <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                      <a
-                        className="text-red-500 hover:text-red-700"
-                        href="#"
-                      >
-                        Delete
-                      </a>
-                    </td>
+                    
                   </tr>
                 ))}
               </tbody>

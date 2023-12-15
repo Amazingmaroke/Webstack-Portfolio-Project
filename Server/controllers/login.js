@@ -36,7 +36,7 @@ console.log(roles)
       const getNewRefreshToken = jwt.sign(
         { "email": requireduser.email},
         process.env.REFRESH_TOKEN_SECRET,
-        { expiresIn: '10d' }
+        { expiresIn: '1000s' }
       );
 
       let getnewRefreshTokenArray = requireduser.userrefreshToken;

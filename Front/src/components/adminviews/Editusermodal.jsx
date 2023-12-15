@@ -1,80 +1,165 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import {axiosall} from "../utilitis/Axiosapi";
+import {  useNavigate,useParams } from 'react-router-dom';
+import { useAxiosPrivatehook } from "../utilitis/Axiosapi";
 
-const Modal = () => {
-  const [showModal, setShowModal] = useState(false);
+const  Editoneuser = () => {
+  const axis=useAxiosPrivatehook()
+    const navigate=useNavigate()
+  const [firstname, setfirstname] = useState("");
+  const [lastname, setlastname] = useState("");
+  const [email, setemail] = useState("");
+  const [phone, setphone] = useState("");
+  const [password, setpassword] = useState("");
+  const [errmsg, setErrmsg] = useState("");
+  const [emsg, setrrmsg] = useState("");
+  const [roles, setroles] = useState();
+  const { userId } = useParams();
+
+  useEffect(() => {
+    setErrmsg(" ");
+  }, [firstname, lastname, email, phone, password,]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axis.put(
+        "/update",
+        JSON.stringify({
+          password,
+          email,
+          phone,
+          firstname,
+          lastname,
+          roles,
+          id:userId
+        }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      console.log(response.data)
+      setrrmsg('user created succesfully')
+      setphone("");
+      setfirstname("");
+      setlastname("");
+      setemail("");
+      setpassword("");
+    setroles("")
+
+      console.log("succes");
+      console.log(response.data)
+    } catch (err) {
+      if (!err?.response) {
+        setErrmsg("No Server Response");
+      } else {
+        console.log(err.response.data);
+        setErrmsg(err.response.data.message);
+      }
+    }
+  };
+
   return (
-    <>
+    <div className="flex items-center m-10 overflow-hidden  flex-col">
       <button
         className="bg-white-200 text-black active:bg-blue-500 
       font-bold px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Create User
+      Edit User
       </button>
-      {showModal ? (
-        <>
-          <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
-                  <h6 className="text-3xl font=semibold">User Info</h6>
-                  <button
-                    className="bg-transparent border-0 text-black float-right"
-                    onClick={() => setShowModal(false)}
-                  >
-                    <span className="text-black opacity-7 h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full">
-                      x
-                    </span>
-                  </button>
-                </div>
-                <div className="relative p-6 flex-auto">
-                  <form className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 w-full">
-                    <label className="block text-black text-sm font-bold mb-1">
-                      First Name
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
-                    <label className="block text-black text-sm font-bold mb-1">
-                      Last Name
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
-                    <label className="block text-black text-sm font-bold mb-1">
-                      Phone Number
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
-                    <label className="block text-black text-sm font-bold mb-1">
-                      Email
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
-                    <label className="block text-black text-sm font-bold mb-1">
-                      Password
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
-                  </form>
-                </div>
-                <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Close
-                  </button>
-                  <button
-                    className="text-white bg-blue-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </>
-      ) : null}
-    </>
+      <p
+              className={
+                emsg
+                  ? " text-firebrick bg-green-400 font-bold mb-2  "
+                  : "absolute left-[-9999px]"
+              }
+            
+            >
+              {emsg}
+            </p>
+      
+            <form onSubmit={handleSubmit} className="w-[70%]">
+              
+    <label htmlFor="firstname" className="text-md mb-2">firstname: 
+
+              <input
+                value={firstname}
+                onChange={(e) => setfirstname(e.target.value)}
+                type="text"
+                class="flex border border-grey-light w-full p-3 rounded mb-4"
+                name="firstname"
+                placeholder="First Name"
+              />
+</label>
+<label htmlFor="lastname" className="text-md mb-2">lastname: 
+
+              <input
+                value={lastname}
+                onChange={(e) => setlastname(e.target.value)}
+                type="text"
+                className="block border border-grey-light w-full p-3 rounded mb-4"
+                name="lastname"
+                placeholder="Last Name"
+              />
+</label>
+<label htmlFor="phone" className="text-md mb-2">Phone: 
+
+              <input
+                onChange={(e) => setphone(e.target.value)}
+                value={phone}
+                type="text"
+                className="block border border-grey-light w-full p-3 rounded mb-4"
+                name="phone"
+                placeholder="Phone Number"
+              />
+</label>
+<label htmlFor="email" className="text-md mb-2">Email: 
+              <input
+                onChange={(e) => setemail(e.target.value)}
+                type="text"
+                class="block border border-grey-light w-full p-3 rounded mb-4"
+                name="email"
+                placeholder="Email"
+                value={email}
+              />
+</label>
+<label htmlFor="password" className="text-md mb-2">Password: 
+              <input
+                value={password}
+                onChange={(e) => setpassword(e.target.value)}
+                type="password"
+                class="block border border-grey-light w-full p-3 rounded mb-4"
+                name="password"
+                placeholder="Password"
+                
+              />
+              </label>
+              <label htmlFor="roles" className="text-md mb-2">Roles: 
+              <input
+                value={roles}
+                onChange={(e) => setroles(e.target.value)}
+                type="number"
+                class="block border border-grey-light w-full p-3 rounded mb-4"
+                name="roles"
+               
+                
+              />
+              </label>
+             
+              <button
+                type="submit"
+                class="w-full text-center py-3 rounded bg-[#1a27d9] text-white hover:bg-green-dark focus:outline-none my-1"
+              >
+                save
+              </button>
+            </form>
+
+           
+    </div>
   );
 };
 
-export default Modal;
+export default Editoneuser;

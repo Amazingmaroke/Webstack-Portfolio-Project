@@ -17,7 +17,7 @@ router.get('/getalluser',validateadmins, getAllUser);
 router.put("/updateprofile/",validatesusers,updateprofile)
 router.post('/create', validateadmins,createUser);
 router.put('/update/', validateadmins,updateUser);
-router.delete('/delete/',validateadmins, deleteUser);
+router.delete('/delete',validateadmins, deleteUser);
 router.post('/register',  registerUser)
 router.post('/login',  Loginhandler)
    

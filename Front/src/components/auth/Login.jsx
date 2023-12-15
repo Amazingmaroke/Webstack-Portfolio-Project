@@ -37,10 +37,7 @@ console.log("loo")
       setAuthcons({  roles, accessToken, id});
 
     // Store data in localStorage
-    localStorage.setItem("accessToken", accessToken);
-    localStorage.setItem("roles", JSON.stringify(roles));
-    localStorage.setItem("id", id);
-
+    
       console.log(roles);
       setemail("");
       setpassword("");

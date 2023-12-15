@@ -1,63 +1,45 @@
 import React, { useState } from 'react';
-import { FaUser } from "react-icons/fa"
-import {
-  BsChevronDown,
-} from 'react-icons/bs';
+import { Link } from 'react-router-dom';
+import { FaUser } from 'react-icons/fa';
+import { BsChevronDown } from 'react-icons/bs';
 
 const Menus = [
-
   {
-    title: 'User',
-    src: 'User',
+    title: 'Crud system',
+    src: '/account',
     icon: <FaUser />,
     subMenus: [
       {
-        title: 'Create User',
-        src: '/user/createuser',
-
-        cName: 'sub-nav',
-      },
-      {
         title: 'View Users',
-        src: '/user/viewuser',
-
+        src: '/account/view',
         cName: 'sub-nav',
       },
       {
-        title: 'Asign Role',
-        src: '/user/userrole',
+        title: 'Edit Users',
+        src: '/account/edit',
+        cName: 'sub-nav',
       },
+      {
+        title: 'Create User',
+        src: '/account/create',
+        cName: 'sub-nav',
+      },
+      
     ],
   },
-  
 ];
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
+
   const toggleSidebar = () => {
     setOpen(!open);
   };
+
   return (
     <div className=" h-screen flex items-end justify-end ">
-      <button
-        className="fixed lg:hidden z-90 bottom-10 right-8 bg-teal-800 w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-teal-800   duration-300"
-        onClick={toggleSidebar}
-      >
-        <span class="text-white">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            class="w-6 m-auto"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"
-            />
-          </svg>
-        </span>
-      </button>
+      {/* ... (your toggle button) */}
 
       <div
         className={` ${
@@ -82,7 +64,9 @@ const Sidebar = () => {
               ${Menu.gap ? 'mt-9' : 'mt-2'}  `}
               >
                 {Menu.icon ? Menu.icon : <MdOutlineDashboard />}
-                <span className="flex-1">{Menu.title}</span>
+                <Link to={Menu.src} className="flex-1">
+                  {Menu.title}
+                </Link>
                 {Menu.subMenus && (
                   <BsChevronDown
                     onClick={() => setSubMenuOpen(!subMenuOpen)}
@@ -97,7 +81,7 @@ const Sidebar = () => {
                       key={idx}
                       className="flex px-5 cursor-pointer text-center hover:bg-[#1a27d9] text-sm text-gray-200 py-1"
                     >
-                      {subMenuItem.title}
+                      <Link to={subMenuItem.src}>{subMenuItem.title}</Link>
                     </li>
                   ))}
                 </ul>

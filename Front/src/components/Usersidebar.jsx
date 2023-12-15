@@ -7,8 +7,8 @@ import {
 const Menus = [
 
   {
-    title: 'User',
-    src: 'User',
+    title: 'Action',
+    src: 'Action',
     icon: <FaUser />,
     subMenus: [
       

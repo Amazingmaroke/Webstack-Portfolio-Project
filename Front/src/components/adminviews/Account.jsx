@@ -1,13 +1,17 @@
 import { Outlet } from 'react-router-dom';
-import Dashboardview from '../components/Dashboardview';
-import Sidebar from '../components/Sidebar';
+import Dashboardview from './Dashboardview';
+import Sidebar from './Sidebar';
 import Tableview from './sections/Tableview';
 import Viewuseradmin from './sections/Viewusersadmin';
+import { useAxiosPrivatehook} from '../utilitis/Axiosapi';
+import { useEffect } from 'react';
+
 
 //import logo from './logo.svg';
 
 
 function Account() {
+  
   return (
     <div className="">
       

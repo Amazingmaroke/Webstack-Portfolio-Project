@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "../Axiosapi";
+import {axiosall} from "../utilitis/Axiosapi";
 import {  useNavigate, } from 'react-router-dom';
 
 
@@ -20,7 +20,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
+      const response = await axiosall.post(
         "/register",
         JSON.stringify({
           password,

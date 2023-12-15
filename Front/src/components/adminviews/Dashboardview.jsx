@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaSearch, FaEnvelope, FaRegBell } from "react-icons/fa"
-import profile from "../assets/profile.png"
+import profile from "../../assets/profile.png"
 
 const Dashboardview = () => {
     const [open, setOpen] = useState(false)

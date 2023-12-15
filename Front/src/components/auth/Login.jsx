@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Authcontextprovider";
-import axios from "../Axiosapi";
+import { useAuth } from "../utilitis/Authcontextprovider";
+import {axiosall} from "../utilitis/Axiosapi";
 import { useState, useEffect } from "react";
 
 const Login = () => {
@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
 console.log("loo")
     try {
-      const response = await axios.post(
+      const response = await axiosall.post(
         "/login",
         JSON.stringify({ email, password }),
         {
@@ -35,6 +35,12 @@ console.log("loo")
       console.log(accessToken,roles,id)
 
       setAuthcons({  roles, accessToken, id});
+
+    // Store data in localStorage
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("roles", JSON.stringify(roles));
+    localStorage.setItem("id", id);
+
       console.log(roles);
       setemail("");
       setpassword("");

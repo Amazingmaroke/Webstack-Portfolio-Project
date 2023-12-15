@@ -3,7 +3,10 @@ import { ButtonGroup, Button } from "@material-tailwind/react";
 
 import { TERipple } from 'tw-elements-react';
 
+
 export default function Tableview() {
+
+  
   return (
     <div className="flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] m-4">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -12,8 +15,8 @@ export default function Tableview() {
             <table className="min-w-full text-left text-sm font-light">
               <thead className="border-b font-medium dark:border-neutral-500">
                 <tr>
-                  <th scope="col" className="px-6 py-4">#</th>
-                  <th scope="col" className="px-6 py-4">First</th>
+                  <th scope="col" className="px-6 py-4" >#</th>
+                  <th scope="col" className="px-6 py-4" >First</th>
                   <th scope="col" className="px-6 py-4">Last</th>
                   <th scope="col" className="px-6 py-4">Handle</th>
                   <th scope="col" className="px-6 py-4 ">Action</th>

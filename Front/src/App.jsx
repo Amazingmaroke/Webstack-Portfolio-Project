@@ -1,11 +1,11 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Account from './components/Account';
+import Account from './components/adminviews/Account';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import { RequireAuth } from './components/Authcontextprovider';
+import { RequireAuth } from './components/utilitis/Authcontextprovider';
 import Landingpage from './components/Landingpage';
-import User from './components/user';
+import User from './components/userviews/user';
 
 
 

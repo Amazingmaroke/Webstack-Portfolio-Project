@@ -46,7 +46,7 @@ const Sidebar = () => {
               !open && 'invisible'
             }`}
           >
-            Admin
+            User
           </h1>
         </div>
         <ul className="pt-6">

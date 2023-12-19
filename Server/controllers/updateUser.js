@@ -16,7 +16,7 @@ const updateUser = async (req, res) => {
     if (req.body?.phone) upuser.phone = req.body.phone;
     if (req.body?.password) upuser.password = req.body.password;
 
-    // Check if roles is present and is a number
+    //
     if (req.body?.roles !== undefined) {
       const rolesNumber = parseInt(req.body.roles);
       if (isNaN(rolesNumber)) {

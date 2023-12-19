@@ -13,7 +13,6 @@ const  Editoneuser = () => {
   const [password, setpassword] = useState("");
   const [errmsg, setErrmsg] = useState("");
   const [emsg, setrrmsg] = useState("");
-  const [roles, setroles] = useState();
   const { userId } = useParams();
 
   useEffect(() => {
@@ -24,14 +23,13 @@ const  Editoneuser = () => {
     e.preventDefault();
     try {
       const response = await axis.put(
-        "/update",
+        "/updateprofile/",
         JSON.stringify({
           password,
           email,
           phone,
           firstname,
           lastname,
-          roles,
           id:userId
         }),
         {
@@ -46,7 +44,7 @@ const  Editoneuser = () => {
       setlastname("");
       setemail("");
       setpassword("");
-    setroles("")
+
 
       console.log("succes");
       console.log(response.data)
@@ -137,17 +135,7 @@ const  Editoneuser = () => {
                 
               />
               </label>
-              <label htmlFor="roles" className="text-md mb-2">Roles: 
-              <input
-                value={roles}
-                onChange={(e) => setroles(e.target.value)}
-                type="number"
-                class="block border border-grey-light w-full p-3 rounded mb-4"
-                name="roles"
-               
-                
-              />
-              </label>
+             
              
               <button
                 type="submit"

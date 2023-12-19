@@ -20,7 +20,7 @@ function App() {
         </Route>
 
         <Route element={<RequireAuth allowedRoles={2} />}>
-          <Route path="user" element={<User />} />
+          <Route path="/user/*" element={<User/>} />
         </Route>
       </Routes>
     </BrowserRouter>

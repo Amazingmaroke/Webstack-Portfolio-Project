@@ -9,6 +9,7 @@ const updateUser = require('../controllers/updateUser');
 const deleteUser = require('../controllers/deleteUser');
 const updateprofile = require('../controllers/updateprofile');
 const {validatesusers,validateadmins} = require('../middleware/validateusers');
+const { Logouthandler } = require('../controllers/Logout');
 const router = express.Router();
 
 // Route to handle user registration
@@ -20,6 +21,7 @@ router.put('/update/', validateadmins,updateUser);
 router.delete('/delete',validateadmins, deleteUser);
 router.post('/register',  registerUser)
 router.post('/login',  Loginhandler)
+router.get("/logout",Logouthandler)
    
 
 

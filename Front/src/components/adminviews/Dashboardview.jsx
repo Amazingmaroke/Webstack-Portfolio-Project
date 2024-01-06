@@ -3,9 +3,10 @@ import { FaSearch, FaEnvelope, FaRegBell } from "react-icons/fa"
 import profile from "../../assets/profile.png"
 import { useAxiosPrivatehook } from '../utilitis/Axiosapi';
 import { useAuth } from '../utilitis/Authcontextprovider';
-
+import Logoutlogger from '../utilitis/logout';
 
 const Dashboardview = () => {
+  const logout=Logoutlogger()
     const [user, setUser] = useState(null);
     const {authcons}=useAuth()
 
@@ -65,7 +66,7 @@ const Dashboardview = () => {
                             <div className='bg-white border h-[120px] w-[150px] absolute bottom-[-135px] z-20 right-0 pt-[15px] pl-[15px] space-y-[10px]'>
                                 <p className='cursor-pointer hover:text-[blue] font-semibold'>Profile</p>
                                 <p className='cursor-pointer hover:text-[blue] font-semibold'>Settings</p>
-                                <p className='cursor-pointer hover:text-[blue] font-semibold'>Log out</p>
+                                <p className='cursor-pointer hover:text-[blue] font-semibold' onClick={logout}>Log out</p>
                             </div>
 
                         }
